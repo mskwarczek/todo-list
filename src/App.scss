@@ -1,8 +1,26 @@
+@use 'src/styles/variables' as var;
+@use 'src/styles/mixins' as mix;
+
 .app-container {
+  $top-height: calc((2 * var.$space-l) + 1.5em + ((2 * var.$space-l) + (2 * var.$space-s) + 1em) / 2);
+  $top-height-xs: calc((2 * var.$space-m) + 1.5em + ((3 * var.$space-m) + (2 * var.$space-s) + 2em) / 2);
   display: flex;
   flex-flow: column nowrap;
   justify-content: flex-start;
   align-items: center;
-  width: 400px;
-  border: 1px solid black;
+  width: 100vw;
+  height: 100vh;
+  gap: var.$space-m;
+  padding: var.$space-m;
+  background-image: linear-gradient(var.$color-primary-dark 0 $top-height-xs, var.$color-primary-light $top-height-xs 100%);
+  @media only screen and (min-width: var.$screen-xs) {
+    gap: var.$space-l;
+    padding: var.$space-l;
+    background-image: linear-gradient(var.$color-primary-dark 0 $top-height, var.$color-primary-light $top-height 100%);
+  }
+
+  .header {
+    font-size: 1.5em;
+    color: var.$color-secondary;
+  }
 }

@@ -1,0 +1,23 @@
+@use 'src/styles/variables' as var;
+
+@mixin box-shadow {
+  box-shadow: 1px 1px 5px -2px var.$color-primary-dark;
+}
+
+@mixin container {
+  @include box-shadow;
+  width: 100%;
+  max-width: 720px;
+  gap: var.$space-m;
+  padding: var.$space-m 0;
+  border-radius: var.$radius-m;
+  background-color: var.$color-secondary;
+  @media only screen and (min-width: var.$screen-xs) {
+    gap: var.$space-l;
+    padding: var.$space-l 0;
+  }
+}
+
+@mixin with-transition {
+  transition: all .3s ease-in-out, visibility .1s ease-in;
+}

@@ -1,8 +1,21 @@
+@use 'src/styles/variables' as var;
+@use 'src/styles/mixins' as mix;
+
 .tasks-container {
+  @include mix.container;
   display: flex;
   flex-flow: column nowrap;
   justify-content: flex-start;
   align-items: stretch;
-  width: 100%;
-  border: 1px solid black;
+  overflow-y: auto;
+
+  &__title {
+    padding-left: var.$space-l;
+    font-size: 1em;
+    font-weight: 600;
+  }
+
+  &__empty {
+    padding-left: var.$space-l;
+  }
 }

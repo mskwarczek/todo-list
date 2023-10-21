@@ -17,20 +17,25 @@ export const NewTaskContainer = () => {
   };
 
   return (
-    <div className='new-task-container'>
-      <div>
-        <label htmlFor="add-new-task">New task:</label>
-      </div>
-      <div>
-        <input
-          type='text'
-          name='new-task'
-          id='add-new-task'
-          value={title}
-          onChange={handleChangeTaskTitle}
-        />
-        <button onClick={handleClickAdd}>add</button>
-      </div>
+    <div className='new-task'>
+      <input
+        id='add-new-task'
+        className='new-task__input'
+        type='text'
+        name='new-task'
+        value={title}
+        onChange={handleChangeTaskTitle}
+        aria-label='New TODO name'
+        placeholder='Add new TODO'
+      />
+      <button
+        className='new-task__button'
+        onClick={handleClickAdd}
+        title='Add new TODO'
+        aria-label='Add new TODO'
+      >
+        Add
+      </button>
     </div>
   );
 };

@@ -1,7 +1,60 @@
+@use 'src/styles/variables' as var;
+@use 'src/styles/mixins' as mix;
+
 .task-card {
+  box-shadow: 0px 2px 5px -6px var.$color-primary-dark;
+  min-height: 30px;
   display: flex;
   flex-flow: row nowrap;
   justify-content: space-between;
   align-items: center;
-  border: 1px solid black;
+  padding: 0 var.$space-m calc(var.$space-m + var.$space-s);
+  @media only screen and (min-width: var.$screen-xs) {
+    padding: 0 var.$space-l calc(var.$space-m + var.$space-s);
+  }
+
+  &:hover {
+    box-shadow: 0px 2px 5px -5px var.$color-primary-dark;
+
+    .task-card__btn-remove  {
+      visibility: visible;
+    }
+  }
+
+  &__btn-remove {
+    all: unset;
+    @include mix.box-shadow;
+    @include mix.with-transition;
+    min-width: 50px;
+    padding: var.$space-s var.$space-m;
+    border-radius: var.$space-s;
+    color: var.$color-secondary;
+    background-color: var.$color-action;
+    text-align: center;
+
+    &:hover {
+      background-color: var.$color-primary-light;
+    }
+
+    @media (hover: hover) {
+      visibility: hidden;
+    }
+  }
+
+  &__task {
+    display: flex;
+    flex-flow: row nowrap;
+    gap: var.$space-m;
+    @media only screen and (min-width: var.$screen-xs) {
+      gap: var.$space-l;
+    }
+  }
+
+  &__title {
+
+    &--done {
+      opacity: 0.8;
+      text-decoration: line-through;
+    }
+  }
 }

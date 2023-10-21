@@ -5,7 +5,7 @@ import { TasksContainer } from './components/TasksContainer';
 const App = () => {
   return (
     <div className='app-container'>
-      TODO List
+      <h1 className='header'>TODO List</h1>
       <NewTaskContainer />
       <TasksContainer />
     </div>

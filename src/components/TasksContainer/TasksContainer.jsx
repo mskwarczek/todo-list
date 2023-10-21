@@ -9,12 +9,16 @@ export const TasksContainer = () => {
 
   return (
     <div className='tasks-container'>
-      {tasks.map(taskId => (
-        <TaskCard
-          key={taskId}
-          id={taskId}
-        />
-      ))}
+      <h2 className='tasks-container__title'>TODO:</h2>
+      {tasks && tasks.length
+        ? tasks.map(taskId => (
+          <TaskCard
+            key={taskId}
+            id={taskId}
+          />
+        ))
+        : <p className='tasks-container__empty'>Your list is empty.</p>
+      }
     </div>
   );
 };

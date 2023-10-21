@@ -27,23 +27,30 @@ export const TaskCard = memo(function TaskCard({ id }) {
 
   return (
     <div className='task-card'>
-      <div>
+      <div className='task-card__task'>
         <input
+          id={id}
           type='checkbox'
           name='task-done'
-          id={id}
+          title={isDone ? 'Mark as not done' : 'Mark as done'}
           checked={isDone}
           onChange={handleChangeTaskStatus}
         />
-        <label htmlFor={id}>
+        <label
+          htmlFor={id}
+          className={`task-card__title ${isDone ? 'task-card__title--done' : ''}`}
+        >
           {title}
         </label>
       </div>
-      <div>
-        <button onClick={handleClickRemove}>
-          remove
-        </button>
-      </div>
+      <button
+        className='task-card__btn-remove'
+        onClick={handleClickRemove}
+        title='Remove'
+        aria-label='Remove'
+      >
+        Remove
+      </button>
     </div>
   );
 });
