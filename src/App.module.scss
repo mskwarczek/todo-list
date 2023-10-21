@@ -1,7 +1,7 @@
 @use 'src/styles/variables' as var;
 @use 'src/styles/mixins' as mix;
 
-.app-container {
+.appContainer {
   $top-height: calc((2 * var.$space-l) + 1.5em + ((2 * var.$space-l) + (2 * var.$space-s) + 1em) / 2);
   $top-height-xs: calc((2 * var.$space-m) + 1.5em + ((3 * var.$space-m) + (2 * var.$space-s) + 2em) / 2);
   display: flex;

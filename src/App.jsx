@@ -1,11 +1,11 @@
-import './App.scss';
+import styles from './App.module.scss';
 import { NewTaskContainer } from './components/NewTaskContainer';
 import { TasksContainer } from './components/TasksContainer';
 
 const App = () => {
   return (
-    <div className='app-container'>
-      <h1 className='header'>TODO List</h1>
+    <div className={styles.appContainer}>
+      <h1 className={styles.header}>TODO List</h1>
       <NewTaskContainer />
       <TasksContainer />
     </div>

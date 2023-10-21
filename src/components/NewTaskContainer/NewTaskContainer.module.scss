@@ -1,0 +1,17 @@
+@use 'src/styles/variables' as var;
+@use 'src/styles/mixins' as mix;
+
+.newTask {
+  @include mix.container;
+  padding-left: var.$space-m;
+  padding-right: var.$space-m;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+  @media only screen and (min-width: var.$screen-xs) {
+    padding-left: var.$space-l;
+    padding-right: var.$space-l;
+    flex-flow: row nowrap;
+  }
+}

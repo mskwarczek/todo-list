@@ -1,0 +1,29 @@
+@use 'src/styles/variables' as var;
+@use 'src/styles/mixins' as mix;
+
+.input {
+  all: unset;
+  @include mix.with-transition;
+  border-bottom: 1px solid var.$color-primary-dark;
+  caret-color: var.$color-primary-light;
+  min-width: 30px;
+  width: 100%;
+  @media only screen and (min-width: var.$screen-s) {
+    width: 300px;
+  }
+
+  &::placeholder {
+    @include mix.with-transition;
+    color: var.$color-primary-dark;
+  }
+
+  &:focus {
+    color: var.$color-primary-dark;
+    border-color: var.$color-primary-light;
+    caret-color: var.$color-primary-light;
+
+    &::placeholder {
+      color: var.$color-primary-light;
+    }
+  }
+}

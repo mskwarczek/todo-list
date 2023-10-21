@@ -1,7 +1,7 @@
 @use 'src/styles/variables' as var;
 @use 'src/styles/mixins' as mix;
 
-.task-card {
+.taskCard {
   box-shadow: 0px 2px 5px -6px var.$color-primary-dark;
   min-height: 30px;
   display: flex;
@@ -16,32 +16,18 @@
   &:hover {
     box-shadow: 0px 2px 5px -5px var.$color-primary-dark;
 
-    .task-card__btn-remove  {
+    .btnRemove {
       visibility: visible;
     }
   }
 
-  &__btn-remove {
-    all: unset;
-    @include mix.box-shadow;
-    @include mix.with-transition;
-    min-width: 50px;
-    padding: var.$space-s var.$space-m;
-    border-radius: var.$space-s;
-    color: var.$color-secondary;
-    background-color: var.$color-action;
-    text-align: center;
-
-    &:hover {
-      background-color: var.$color-primary-light;
-    }
-
+  .btnRemove {
     @media (hover: hover) {
       visibility: hidden;
     }
   }
 
-  &__task {
+  .task {
     display: flex;
     flex-flow: row nowrap;
     gap: var.$space-m;
@@ -50,9 +36,8 @@
     }
   }
 
-  &__title {
-
-    &--done {
+  .title {
+    &.done {
       opacity: 0.8;
       text-decoration: line-through;
     }

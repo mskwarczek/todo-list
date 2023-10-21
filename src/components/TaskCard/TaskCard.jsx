@@ -1,12 +1,13 @@
 import { memo } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
-import './TaskCard.scss';
+import styles from './TaskCard.module.scss';
 import {
   selectTaskById,
   updateTask,
   removeTask
 } from '../../store/slices';
+import { Button } from '../Button';
 
 export const TaskCard = memo(function TaskCard({ id }) {
   const { title, isDone } = useSelector(state => selectTaskById(state, id));
@@ -26,8 +27,8 @@ export const TaskCard = memo(function TaskCard({ id }) {
   };
 
   return (
-    <div className='task-card'>
-      <div className='task-card__task'>
+    <div className={styles.taskCard}>
+      <div className={styles.task}>
         <input
           id={id}
           type='checkbox'
@@ -38,19 +39,19 @@ export const TaskCard = memo(function TaskCard({ id }) {
         />
         <label
           htmlFor={id}
-          className={`task-card__title ${isDone ? 'task-card__title--done' : ''}`}
+          className={`${styles.title} ${isDone ? styles.done : ''}`}
         >
           {title}
         </label>
       </div>
-      <button
-        className='task-card__btn-remove'
-        onClick={handleClickRemove}
-        title='Remove'
-        aria-label='Remove'
-      >
-        Remove
-      </button>
+      <div className={styles.btnRemove}>
+        <Button
+          handleClick={handleClickRemove}
+          text='Remove'
+          title='Remove'
+          label={`Remove task ${title}`}
+        />
+      </div>
     </div>
   );
 });

@@ -1,0 +1,18 @@
+@use 'src/styles/variables' as var;
+@use 'src/styles/mixins' as mix;
+
+.button {
+  all: unset;
+  @include mix.box-shadow;
+  @include mix.with-transition;
+  min-width: 50px;
+  padding: var.$space-s var.$space-m;
+  border-radius: var.$space-s;
+  color: var.$color-secondary;
+  background-color: var.$color-action;
+  text-align: center;
+
+  &:hover {
+    background-color: var.$color-primary-light;
+  }
+}

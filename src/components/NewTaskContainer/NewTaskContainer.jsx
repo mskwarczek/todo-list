@@ -1,8 +1,10 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 
-import './NewTaskContainer.scss';
+import styles from './NewTaskContainer.module.scss';
 import { addTask } from '../../store/slices';
+import { Button } from '../Button';
+import { Input } from '../Input';
 
 export const NewTaskContainer = () => {
   const [ title, setTitle ] = useState('');
@@ -17,25 +19,21 @@ export const NewTaskContainer = () => {
   };
 
   return (
-    <div className='new-task'>
-      <input
+    <div className={styles.newTask}>
+      <Input
         id='add-new-task'
-        className='new-task__input'
-        type='text'
         name='new-task'
         value={title}
-        onChange={handleChangeTaskTitle}
-        aria-label='New TODO name'
-        placeholder='Add new TODO'
+        handleChange={handleChangeTaskTitle}
+        label='New task name'
+        placeholder='Add new task'
       />
-      <button
-        className='new-task__button'
-        onClick={handleClickAdd}
-        title='Add new TODO'
-        aria-label='Add new TODO'
-      >
-        Add
-      </button>
+      <Button
+        handleClick={handleClickAdd}
+        text='Add'
+        title='Add new task'
+        label='Add new task'
+      />
     </div>
   );
 };
