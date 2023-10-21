@@ -1,0 +1,127 @@
+@use 'src/styles/variables' as var;
+@use 'src/styles/mixins' as mix;
+
+@keyframes checkboxAnimation {
+  0% {
+    stroke-dashoffset: 0;
+    fill: var.$color-secondary;
+  }
+  1% {
+    stroke-dashoffset: 330;
+    opacity: 0;
+  }
+  60% {
+    fill: var.$color-secondary;
+  }
+  100% {
+    stroke-dashoffset: 0;
+    fill: var.$color-primary-dark;
+    opacity: 1;
+  }
+}
+
+@keyframes reverseCheckboxAnimation {
+  0% {
+    stroke-dashoffset: 0;
+    fill: var.$color-primary-dark;
+    opacity: 1;
+  }
+  1% {
+    stroke-dashoffset: 330;
+    opacity: 0;
+  }
+  60% {
+    fill: var.$color-secondary;
+  }
+  100% {
+    stroke-dashoffset: 0;
+    fill: var.$color-secondary;
+  }
+}
+
+@keyframes strokeAnimation {
+  0% {
+    stroke-dashoffset: 100;
+  }
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+
+.checkbox {
+  display: none;
+
+  & + .label {
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    gap: var.$space-m;
+    cursor: pointer;
+    @media only screen and (min-width: var.$screen-xs) {
+      gap: var.$space-l;
+    }
+    
+    &.done {
+      opacity: 0.8;
+      text-decoration: line-through;
+    }
+
+    svg {
+      min-width: 14px;
+      min-height: 14px;
+    }
+
+    span {
+      overflow-wrap: anywhere;
+    }
+
+    .box {
+      stroke: var.$color-primary-dark;
+      transform-box: fill-box;
+      transform-origin: 50% 50%;
+      fill: var.$color-secondary;
+      stroke-width: 6px; 
+      stroke-dasharray: 330;
+      stroke-dashoffset: 0;
+    }
+    
+    .check {
+      stroke: var.$color-secondary;
+      paint-order: fill;
+      stroke-width: 8px;
+      fill: none;
+      stroke-dasharray: 100;
+      stroke-dashoffset: 100;
+    }
+  }
+
+  &:checked + .label {
+    .box {
+      fill: var.$color-primary-dark;
+    }
+
+    .check {
+      stroke-dashoffset: 0;
+    }
+  }
+
+  &[animate='1']:checked + .label {
+    .box {
+      animation: checkboxAnimation .5s linear;
+    }
+
+    .check {
+      animation: strokeAnimation .5s linear;
+    }
+  }
+
+  &[animate='1'] + .label {
+    .box {
+      animation: reverseCheckboxAnimation .5s linear;
+    }
+
+    .check {
+      animation: strokeAnimation .5s linear reverse;
+    }
+  }
+}

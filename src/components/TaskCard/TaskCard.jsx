@@ -5,9 +5,10 @@ import styles from './TaskCard.module.scss';
 import {
   selectTaskById,
   updateTask,
-  removeTask
+  removeTask,
 } from '../../store/slices';
 import { Button } from '../Button';
+import { Checkbox } from '../Checkbox';
 
 export const TaskCard = memo(function TaskCard({ id }) {
   const { title, isDone } = useSelector(state => selectTaskById(state, id));
@@ -28,22 +29,14 @@ export const TaskCard = memo(function TaskCard({ id }) {
 
   return (
     <div className={styles.taskCard}>
-      <div className={styles.task}>
-        <input
-          id={id}
-          type='checkbox'
-          name='task-done'
-          title={isDone ? 'Mark as not done' : 'Mark as done'}
-          checked={isDone}
-          onChange={handleChangeTaskStatus}
-        />
-        <label
-          htmlFor={id}
-          className={`${styles.title} ${isDone ? styles.done : ''}`}
-        >
-          {title}
-        </label>
-      </div>
+      <Checkbox
+        id={id}
+        name='task-done'
+        title={isDone ? 'Mark as not done' : 'Mark as done'}
+        checked={isDone}
+        handleChange={handleChangeTaskStatus}
+        label={title}
+      />
       <div className={styles.btnRemove}>
         <Button
           handleClick={handleClickRemove}
