@@ -21,3 +21,15 @@
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
 }
+
+body {
+  ::-webkit-scrollbar {
+    height: 4px;
+    width: 4px;
+    background: var.$color-primary-light;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: var.$color-primary-dark;
+    -webkit-border-radius: 24px;
+  }
+}

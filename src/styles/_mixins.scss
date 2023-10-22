@@ -19,5 +19,5 @@
 }
 
 @mixin with-transition {
-  transition: all .3s ease-in-out, visibility .1s ease-in;
+  transition: all .3s ease-in-out, visibility 0s;
 }
