@@ -5,6 +5,7 @@ export const Button = ({
   title,
   label,
   handleClick,
+  disabled,
 }) => {
   return (
     <button
@@ -12,6 +13,7 @@ export const Button = ({
       onClick={handleClick}
       title={title}
       aria-label={label}
+      disabled={disabled}
     >
       {text}
     </button>

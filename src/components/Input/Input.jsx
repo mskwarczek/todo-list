@@ -8,6 +8,7 @@ export const Input = ({
   handleChange,
   label,
   placeholder,
+  required,
 }) => {
   return (
     <input
@@ -19,6 +20,7 @@ export const Input = ({
       onChange={handleChange}
       aria-label={label}
       placeholder={placeholder}
+      required={required}
     />
   );
 };

@@ -13,7 +13,12 @@
   text-align: center;
   cursor: pointer;
 
-  &:hover {
+  &:not(:disabled):hover {
     background-color: var.$color-primary-light;
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+    opacity: .6;
   }
 }
