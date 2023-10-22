@@ -5,13 +5,21 @@
   all: unset;
   @include mix.box-shadow;
   @include mix.with-transition;
-  min-width: 50px;
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: baseline;
+  justify-content: center;
+  gap: var.$space-s;
+  min-width: 30px;
   padding: var.$space-s var.$space-m;
   border-radius: var.$space-s;
   color: var.$color-secondary;
   background-color: var.$color-action;
   text-align: center;
   cursor: pointer;
+  @media only screen and (min-width: var.$screen-s) {
+    min-width: 50px;
+  }
 
   &:not(:disabled):hover {
     background-color: var.$color-primary-light;
@@ -20,5 +28,12 @@
   &:disabled {
     cursor: not-allowed;
     opacity: .6;
+  }
+
+  .text.hideOnSmScreen {
+    display: none;
+    @media only screen and (min-width: var.$screen-s) {
+      display: initial;
+    }
   }
 }

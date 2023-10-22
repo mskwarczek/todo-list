@@ -5,6 +5,7 @@ import styles from './NewTaskContainer.module.scss';
 import { addTask } from '../../store/slices';
 import { Button } from '../Button';
 import { Input } from '../Input';
+import { PlusIcon } from '../../assets/icons/PlusIcon';
 
 export const NewTaskContainer = () => {
   const [ title, setTitle ] = useState('');
@@ -41,6 +42,7 @@ export const NewTaskContainer = () => {
         title={`Add new task. ${ !title.length ? 'Please enter task name first' : '' }`}
         label='Add new task'
         disabled={!title.length}
+        icon={<PlusIcon className={styles.plusIcon} />}
       />
     </form>
   );

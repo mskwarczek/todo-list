@@ -8,9 +8,11 @@
   flex-flow: row nowrap;
   justify-content: space-between;
   align-items: center;
+  gap: var.$space-m;
   padding: 0 var.$space-m calc(var.$space-m + var.$space-s);
   @media only screen and (min-width: var.$screen-xs) {
     padding: 0 var.$space-l calc(var.$space-m + var.$space-s);
+    gap: var.$space-l;
   }
 
   &:hover {
@@ -24,6 +26,18 @@
   .btnRemove {
     @media (hover: hover) {
       visibility: hidden;
+    }
+  }
+
+  .trashIcon {
+    width: 13px;
+    height: 13px;
+    fill: var.$color-secondary;
+
+    @media only screen and (min-width: var.$screen-s) {
+      width: 12px;
+      height: 12px;
+      padding-bottom: 1px;
     }
   }
 }

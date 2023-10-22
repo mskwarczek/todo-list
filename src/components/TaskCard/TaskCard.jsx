@@ -9,6 +9,7 @@ import {
 } from '../../store/slices';
 import { Button } from '../Button';
 import { Checkbox } from '../Checkbox';
+import { TrashIcon } from '../../assets/icons/TrashIcon';
 
 export const TaskCard = memo(function TaskCard({ id }) {
   const { title, isDone } = useSelector(state => selectTaskById(state, id));
@@ -43,6 +44,8 @@ export const TaskCard = memo(function TaskCard({ id }) {
           text='Remove'
           title='Remove'
           label={`Remove task ${title}`}
+          icon={<TrashIcon className={styles.trashIcon} />}
+          smallScreenIconOnly={true}
         />
       </div>
     </div>

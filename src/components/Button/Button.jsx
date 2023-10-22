@@ -2,10 +2,12 @@ import styles from './Button.module.scss';
 
 export const Button = ({
   text,
+  icon,
   title,
   label,
   handleClick,
   disabled,
+  smallScreenIconOnly,
 }) => {
   return (
     <button
@@ -15,7 +17,8 @@ export const Button = ({
       aria-label={label}
       disabled={disabled}
     >
-      {text}
+      {icon}
+      <span className={`${styles.text} ${smallScreenIconOnly && icon ? styles.hideOnSmScreen : ''}`}>{text}</span>
     </button>
   );
 };

@@ -14,4 +14,10 @@
     padding-right: var.$space-l;
     flex-flow: row nowrap;
   }
+
+  .plusIcon {
+    width: 11px;
+    height: 11px;
+    fill: var.$color-secondary;
+  }
 }
