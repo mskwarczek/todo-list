@@ -1,9 +1,13 @@
 import { createSlice, createEntityAdapter } from '@reduxjs/toolkit';
 
-import { createId } from '../../utils/createId';
+import { createTimestamp, createId } from '../../utils';
 
 const tasksAdapter = createEntityAdapter({
-  sortComparer: (a, b) => Number(a.isDone) - Number(b.isDone),
+  sortComparer: (a, b) => {
+    const doneTest = Number(a.isDone) - Number(b.isDone);
+    if (doneTest !== 0) return Number(a.isDone) - Number(b.isDone);
+    return a.updatedAt - b.updatedAt;
+  },
 });
 
 const initialState = tasksAdapter.getInitialState();
@@ -13,15 +17,24 @@ export const tasksSlice = createSlice({
   initialState,
   reducers: {
     addTask(state, action) {
-      const newTodo = {
+      const newTask = {
         id: createId('task'),
         title: action.payload.title,
         isDone: false,
+        updatedAt: createTimestamp(),
       };
-      tasksAdapter.addOne(state, newTodo);
+      tasksAdapter.addOne(state, newTask);
     },
     updateTask(state, action) {
-      tasksAdapter.updateOne(state, action.payload);
+      const { id, changes } = action.payload;
+      const updateObj = {
+        id,
+        changes: {
+          ...changes,
+          updatedAt: createTimestamp(),
+        },
+      };
+      tasksAdapter.updateOne(state, updateObj);
     },
     removeTask(state, action) {
       tasksAdapter.removeOne(state, action.payload.id);

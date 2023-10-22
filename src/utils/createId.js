@@ -1,6 +1,7 @@
+import { createTimestamp } from './createTimestamp';
+
 export const createId = (prefix = '') => {
-  const date = new Date();
-  const dateString = date.toISOString().replace(/\D/g,'');
+  const dateString = createTimestamp();
   const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
   const charactersLength = characters.length;
   let randomString = '';
